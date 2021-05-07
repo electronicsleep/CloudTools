@@ -1,0 +1,4 @@
+typer
+boto3
+requests
+termcolor
