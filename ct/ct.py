@@ -12,6 +12,8 @@ app = typer.Typer()
 @app.command()
 def aws(action: str, verbose: bool = False):
     """ AWS commands using Boto3 """
+    if verbose:
+        typer.echo(f"Verbose on")
     if action == "list-inst":
         typer.echo(f"AWS action {action}")
     elif action == "list_rds":
@@ -23,6 +25,8 @@ def aws(action: str, verbose: bool = False):
 
 @app.command()
 def gcp(action: str, verbose: bool = False):
+    if verbose:
+        typer.echo(f"Verbose on")
     if action == "list-inst":
         typer.echo(f"GCP action {action}")
     else:
