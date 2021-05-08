@@ -24,3 +24,4 @@ def aws_list_inst():
             if inst['State']['Name'] == 'running':
                 print("%s # %s %s %s" % (inst['PublicIpAddress'], inst['InstanceId'],
                                          inst['Tags'][0]['Value'], inst['State']['Name']))
+
