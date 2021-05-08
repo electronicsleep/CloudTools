@@ -10,27 +10,30 @@ app = typer.Typer()
 
 
 @app.command()
-def aws(action: str, verbose: bool = False):
-    """ AWS commands using Boto3 """
+def aws(cmd: str, verbose: bool = False):
+    """ AWS cmd """
+    typer.echo(f"AWS cmd {cmd}")
     if verbose:
         typer.echo(f"Verbose on")
-    if action == "list-inst":
-        typer.echo(f"AWS action {action}")
-    elif action == "list_rds":
-        typer.echo(f"AWS action {action}")
+    if cmd == "list-inst":
+        typer.echo(f"Run AWS cmd {cmd}")
+    elif cmd == "list_rds":
+        typer.echo(f"Run AWS cmd {cmd}")
     else:
-        typer.echo(f"AWS action {action}")
+        typer.echo(f"Run AWS cmd {cmd}")
 
 
 
 @app.command()
-def gcp(action: str, verbose: bool = False):
+def gcp(cmd: str, verbose: bool = False):
+    """ GCP cmd """
+    typer.echo(f"GCP cmd {cmd}")
     if verbose:
         typer.echo(f"Verbose on")
-    if action == "list-inst":
-        typer.echo(f"GCP action {action}")
+    if cmd == "list-inst":
+        typer.echo(f"Run GCP cmd {cmd}")
     else:
-        typer.echo(f"GPC action {action}")
+        typer.echo(f"Run GPC cmd {cmd}")
 
 
 if __name__ == "__main__":
