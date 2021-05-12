@@ -1,4 +1,7 @@
 typer
+fastapi
+uvicorn
 boto3
+google-api-python-client
 requests
 termcolor

@@ -1,16 +1,16 @@
-import typer
-import requests
-import pprint
-
 # Usage
 # python3 ct.py aws list-inst
 # python3 ct.py gcp list-inst --verbose
 # python3 ct.py endpoint-check-all --verbose
 
-app = typer.Typer()
+import typer
+import requests
+import pprint
 
 import ct_lib as ct_lib
 import ct_inv as ct_inv
+
+app = typer.Typer()
 
 
 @app.command()
@@ -37,6 +37,7 @@ def gcp(cmd: str, verbose: bool = False):
         typer.echo(f"Verbose on")
     if cmd == "list-inst":
         typer.echo(f"Run GCP cmd {cmd}")
+
     else:
         typer.echo(f"Run GPC cmd {cmd}")
 
