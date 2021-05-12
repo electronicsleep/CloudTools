@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Usage
 # python3 ct.py aws list-inst
 # python3 ct.py gcp list-inst --verbose

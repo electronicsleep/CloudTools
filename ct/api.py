@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from typing import Optional
 from fastapi import FastAPI
 from ct_inv import server_list
@@ -15,7 +17,7 @@ def read_health():
     return {"Status": "Up"}
 
 
-@app.get("/inv")
+@app.get("/api")
 def read_inv():
     payload = {'sites': server_list}
     return payload
