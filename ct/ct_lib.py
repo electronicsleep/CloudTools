@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # ct library
 
 import boto3
@@ -25,3 +27,6 @@ def aws_list_inst():
                 print("%s # %s %s %s" % (inst['PublicIpAddress'], inst['InstanceId'],
                                          inst['Tags'][0]['Value'], inst['State']['Name']))
 
+
+def aws_update_r53():
+    print("Updating r53 now")

@@ -2,6 +2,8 @@
 
 # Usage
 # python3 ct.py aws list-inst
+# python3 ct.py aws list-rds
+# python3 ct.py aws update-r53 
 # python3 ct.py gcp list-inst --verbose
 # python3 ct.py endpoint-check-all --verbose
 
@@ -21,14 +23,18 @@ def aws(cmd: str, verbose: bool = False):
     typer.echo(f"AWS cmd {cmd}")
     if verbose:
         typer.echo(f"Verbose on")
-    ct_lib.ask_continue()
     if cmd == "list-inst":
         typer.echo(f"Run AWS cmd {cmd}")
         ct_lib.aws_list_inst()
-    elif cmd == "list_rds":
+    elif cmd == "list-rds":
         typer.echo(f"Run AWS cmd {cmd}")
+    elif cmd == "update-r53":
+        typer.echo(f"Run AWS cmd {cmd}")
+        typer.echo(f"Are you sure you want to update r53?")
+        ct_lib.ask_continue()
+        ct_lib.aws_update_r53()
     else:
-        typer.echo(f"Run AWS cmd {cmd}")
+        typer.echo(f"Command not defined {cmd}")
 
 
 @app.command()
@@ -41,8 +47,7 @@ def gcp(cmd: str, verbose: bool = False):
         typer.echo(f"Run GCP cmd {cmd}")
 
     else:
-        typer.echo(f"Run GPC cmd {cmd}")
-
+        typer.echo(f"Command not defined {cmd}")
 
 @app.command()
 def endpoint_check_all(verbose: bool = False):
