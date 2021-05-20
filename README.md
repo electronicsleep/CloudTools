@@ -1,9 +1,11 @@
 # CloudTools
 
-CloudTools - Python cloud tools example using Typer library
+CloudTools - Python cloud tools template using Typer/Fastapi
 
 ```
-pip3 install -r requirements.txt
+python3 -m venv tempEnv
+source tempEnv/bin/activate
+pip install -r requirements.txt
 
 python3 ct/ct.py aws list-inst
 ```
