@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+# Author: Chris Robertson electronicsleep@gmail.com
+# Purpose: CloudTools - Python cloud tools template using Typer/Fastapi
 
-# Usage
-# python3 ct.py aws list-inst
+# Usage:
+# python3 ct.py aws list-ec2
 # python3 ct.py aws list-rds
 # python3 ct.py aws update-r53 
 # python3 ct.py gcp list-inst --verbose
@@ -23,7 +25,7 @@ def aws(cmd: str, verbose: bool = False):
     typer.echo(f"AWS cmd {cmd}")
     if verbose:
         typer.echo(f"Verbose on")
-    if cmd == "list-inst":
+    if cmd == "list-ec2":
         typer.echo(f"Run AWS cmd {cmd}")
         ct_lib.aws_list_inst()
     elif cmd == "list-rds":
@@ -48,6 +50,7 @@ def gcp(cmd: str, verbose: bool = False):
 
     else:
         typer.echo(f"Command not defined {cmd}")
+
 
 @app.command()
 def endpoint_check_all(verbose: bool = False):
