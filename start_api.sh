@@ -1,3 +1,3 @@
 #!/bin/bash
-cd ct
+cd src
 uvicorn --port 8080 api:app --reload
