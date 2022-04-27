@@ -16,43 +16,43 @@ import pprint
 import ct_lib as ct_lib
 import ct_inv as ct_inv
 
-app = typer.Typer()
+main = typer.Typer()
 
 
-@app.command()
+@main.command()
 def aws(cmd: str, verbose: bool = False):
     """ AWS cmd """
-    typer.echo(f"AWS cmd {cmd}")
+    typer.echo(f"AWS cmd: {cmd}")
     if verbose:
         typer.echo(f"Verbose on")
     if cmd == "list-ec2":
-        typer.echo(f"Run AWS cmd {cmd}")
-        ct_lib.aws_list_inst()
+        typer.echo(f"Run AWS cmd: {cmd}")
+        ct_lib.aws_list_ec2(verbose)
     elif cmd == "list-rds":
-        typer.echo(f"Run AWS cmd {cmd}")
+        typer.echo(f"Run AWS cmd: {cmd}")
     elif cmd == "update-r53":
-        typer.echo(f"Run AWS cmd {cmd}")
+        typer.echo(f"Run AWS cmd: {cmd}")
         typer.echo(f"Are you sure you want to update r53?")
         ct_lib.ask_continue()
-        ct_lib.aws_update_r53()
+        ct_lib.aws_update_r53(verbose)
     else:
-        typer.echo(f"Command not defined {cmd}")
+        typer.echo(f"Cmd not defined: {cmd}")
 
 
-@app.command()
+@main.command()
 def gcp(cmd: str, verbose: bool = False):
     """ GCP cmd """
-    typer.echo(f"GCP cmd {cmd}")
+    typer.echo(f"GCP cmd: {cmd}")
     if verbose:
         typer.echo(f"Verbose on")
     if cmd == "list-inst":
-        typer.echo(f"Run GCP cmd {cmd}")
+        typer.echo(f"Run GCP cmd: {cmd}")
 
     else:
-        typer.echo(f"Command not defined {cmd}")
+        typer.echo(f"Cmd not defined: {cmd}")
 
 
-@app.command()
+@main.command()
 def endpoint_check_all(verbose: bool = False):
     """ Endpoint check """
     if verbose:
@@ -70,4 +70,4 @@ def endpoint_check_all(verbose: bool = False):
 
 
 if __name__ == "__main__":
-    app()
+    main()

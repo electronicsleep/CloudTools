@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Chris Robertson electronicsleep@gmail.com
+# Purpose: CloudTools - Python cloud tools template using Typer/Fastapi
 
 # ct library
 
@@ -18,8 +20,10 @@ def ask_continue():
         exit(1)
 
 
-def aws_list_inst():
+def aws_list_ec2(verbose):
     client = boto3.client('ec2', 'us-west-1')
+    if verbose:
+        print("Verbose on")
     response = client.describe_instances()
     for r in response['Reservations']:
         for inst in r['Instances']:
@@ -28,5 +32,7 @@ def aws_list_inst():
                                          inst['Tags'][0]['Value'], inst['State']['Name']))
 
 
-def aws_update_r53():
+def aws_update_r53(verbose):
+    if verbose:
+        print("Verbose on")
     print("Updating r53 now")
