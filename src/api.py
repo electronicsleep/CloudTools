@@ -9,7 +9,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Cloud Tools": "http://127.0.0.1:8080/api"}
+    return {"CloudTools": "http://127.0.0.1:8080/api"}
 
 
 @app.get("/health")

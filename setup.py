@@ -9,6 +9,6 @@ setup(name='ct',
       url='https://github.com/electronicsleep/CloudTools',
       package_dir={'': 'src'},
       entry_points={
-        'console_scripts': ['ct=ct:app']
+        'console_scripts': ['ct=ct:main']
       }
 )
