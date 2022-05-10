@@ -20,7 +20,7 @@ main = typer.Typer()
 
 
 @main.command()
-def aws(cmd: str = typer.Option(..., "--cmd", "-c"), verbose: bool = typer.Option(False, "--verbose", "-v")):
+def aws(cmd: str = typer.Option(..., "--cmd", "-c", help="list-ec2, list-rds, update-r53"), verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ AWS cmd """
     typer.echo(f"AWS cmd: {cmd}")
     if verbose:
@@ -40,7 +40,7 @@ def aws(cmd: str = typer.Option(..., "--cmd", "-c"), verbose: bool = typer.Optio
 
 
 @main.command()
-def gcp(cmd: str = typer.Option(..., "--cmd", "-c"), verbose: bool = typer.Option(False, "--verbose", "-v")):
+def gcp(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"), verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ GCP cmd """
     typer.echo(f"GCP cmd: {cmd}")
     if verbose:
