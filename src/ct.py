@@ -6,8 +6,8 @@
 # python3 ct.py aws -c list-ec2
 # python3 ct.py aws -c list-rds
 # python3 ct.py aws -c update-r53 
-# python3 ct.py gcp -c list-inst --verbose
-# python3 ct.py endpoint-check-all --verbose
+# python3 ct.py gcp -c list-inst -v
+# python3 ct.py check-sites -v
 
 import typer
 import requests
