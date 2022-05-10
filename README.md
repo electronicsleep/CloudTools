@@ -2,17 +2,20 @@
 
 CloudTools - Python Cloud Tools template using Typer/Fastapi
 
-Setup
+Python Package
 ```
 pip3 install -r requirements.txt
 pip3 install .
 
 ct --help
-ct aws list-ec2
-ct aws list-rds
-ct aws update-r53
-ct gcp list-inst --verbose
-ct endpoint-check-all --verbose
+ct aws --help
+ct aws -c list-ec2
+ct aws -c list-rds
+ct aws -c update-r53
+
+ct gcp --help
+ct gcp -c list-inst --verbose
+ct check-sites --verbose
 ```
 
 API

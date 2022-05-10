@@ -3,10 +3,10 @@
 # Purpose: CloudTools - Python cloud tools template using Typer/Fastapi
 
 # Usage:
-# python3 ct.py aws list-ec2
-# python3 ct.py aws list-rds
-# python3 ct.py aws update-r53 
-# python3 ct.py gcp list-inst --verbose
+# python3 ct.py aws -c list-ec2
+# python3 ct.py aws -c list-rds
+# python3 ct.py aws -c update-r53 
+# python3 ct.py gcp -c list-inst --verbose
 # python3 ct.py endpoint-check-all --verbose
 
 import typer
