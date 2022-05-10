@@ -20,7 +20,7 @@ main = typer.Typer()
 
 
 @main.command()
-def aws(cmd: str, verbose: bool = False):
+def aws(cmd: str = typer.Option(..., "--cmd", "-c"), verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ AWS cmd """
     typer.echo(f"AWS cmd: {cmd}")
     if verbose:
@@ -40,7 +40,7 @@ def aws(cmd: str, verbose: bool = False):
 
 
 @main.command()
-def gcp(cmd: str, verbose: bool = False):
+def gcp(cmd: str = typer.Option(..., "--cmd", "-c"), verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ GCP cmd """
     typer.echo(f"GCP cmd: {cmd}")
     if verbose:
@@ -53,7 +53,7 @@ def gcp(cmd: str, verbose: bool = False):
 
 
 @main.command()
-def endpoint_check_all(verbose: bool = False):
+def check_sites(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ Endpoint check """
     if verbose:
         typer.echo(f"Verbose on")
