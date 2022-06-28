@@ -43,7 +43,12 @@ python3 ct.py --help
 python3 ct.py aws list-ec2
 ```
 
-CLI: https://github.com/tiangolo/typer
+Python3/Rust
+```
+cd src
+cd lib && bash build.sh
+```
 
+CLI: https://github.com/tiangolo/typer
 
 API: https://github.com/tiangolo/fastapi
