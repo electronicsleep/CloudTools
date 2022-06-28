@@ -1,0 +1,13 @@
+[package]
+name = "CloudToolsLib"
+version = "0.0.1"
+authors = ["Chris https://github.com/electronicsleep"]
+edition = "2018"
+
+[lib]
+name = "cloudtools"
+crate-type = ["cdylib"]
+
+[dependencies.cpython]
+version = "0.7"
+features = ["extension-module"]
