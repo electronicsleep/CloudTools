@@ -3,13 +3,21 @@
 # Build: cd lib && bash build.sh
 import lib.libcloudtools as libcloudtools 
 
-name = input("what is your name?\n")
+import typer
 
-result = libcloudtools.get_version()
-print(result)
+def main(cmd: str = typer.Argument("hello"), verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """ Rust """
+    typer.echo(f"Rust cmd: {cmd} verbose: {verbose}")
 
-result = libcloudtools.get_result(f"get_result: Rust Name: {name}")
-print(result)
+    result = libcloudtools.get_version()
+    print(result)
 
-result = libcloudtools.run_get_test(f"run_get_test: Rust: Name: {name}")
-print(result)
+    result = libcloudtools.get_result(f"get_result: Rust Cmd: {cmd}")
+    print(result)
+
+    result = libcloudtools.run_get_test(f"run_get_test: Rust: Cmd: {cmd}")
+    print(result)
+
+
+if __name__ == "__main__":
+    typer.run(main)
