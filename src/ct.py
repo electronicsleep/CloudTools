@@ -4,10 +4,8 @@
 
 # Usage:
 # python3 ct.py aws -c list-ec2
-# python3 ct.py aws -c list-rds
-# python3 ct.py aws -c update-r53 
-# python3 ct.py gcp -c list-inst -v
-# python3 ct.py check-sites -v
+# python3 ct.py gcp -c list-inst
+# python3 ct.py check-sites
 
 import typer
 import requests
@@ -18,48 +16,46 @@ import ct_inv as ct_inv
 
 main = typer.Typer()
 
+default_aws_region = 'us-west-1'
+default_gcp_project = 'qa'
+
 
 @main.command()
-def aws(cmd: str = typer.Option(..., "--cmd", "-c", help="list-ec2, list-rds, update-r53"), verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ AWS cmd """
-    typer.echo(f"AWS cmd: {cmd}")
+def aws(cmd: str = typer.Option(..., "--cmd", "-c", help="list-ec2, list-rds, update-r53"),
+        verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """ aws cmd """
     if verbose:
-        typer.echo(f"Verbose on")
+        typer.echo(f"aws cmd: {cmd} verbose: {verbose}")
     if cmd == "list-ec2":
-        typer.echo(f"Run AWS cmd: {cmd}")
-        ct_lib.aws_list_ec2(verbose)
+        ct_lib.aws_list_ec2(default_aws_region, verbose)
     elif cmd == "list-rds":
-        typer.echo(f"Run AWS cmd: {cmd}")
+        typer.echo(f"aws cmd: {cmd}")
     elif cmd == "update-r53":
-        typer.echo(f"Run AWS cmd: {cmd}")
-        typer.echo(f"Are you sure you want to update r53?")
+        typer.echo(f"aws cmd {cmd} are you sure you want to update r53?")
         ct_lib.ask_continue()
         ct_lib.aws_update_r53(verbose)
-    else:
-        typer.echo(f"Cmd not defined: {cmd}")
 
 
 @main.command()
-def gcp(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"), verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ GCP cmd """
-    typer.echo(f"GCP cmd: {cmd}")
+def gcp(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+        verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """ gcp cmd """
     if verbose:
-        typer.echo(f"Verbose on")
+        typer.echo(f"gcp cmd: {cmd} verbose: {verbose}")
     if cmd == "list-inst":
-        typer.echo(f"Run GCP cmd: {cmd}")
-
-    else:
-        typer.echo(f"Cmd not defined: {cmd}")
+        ct_lib.gcp_list_inst(default_gcp_project, verbose)
+    if cmd == "test-ls":
+        ct_lib.test_ls(verbose)
 
 
 @main.command()
 def check_sites(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ Endpoint check """
     if verbose:
-        typer.echo(f"Verbose on")
+        typer.echo(f"check_sites: verbose: {verbose}")
         pprint.pprint(ct_inv.server_list)
     for url in ct_inv.server_list:
-        typer.echo(f"Endpoint check {url}")
+        typer.echo(f"check_sites cmd: {url}")
         response = requests.get(url)
         if response.status_code == 200:
             print("200 ok")

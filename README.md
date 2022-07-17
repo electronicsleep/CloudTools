@@ -2,21 +2,28 @@
 
 CloudTools - Python Cloud Tools template using Typer/Fastapi
 
-Python Package
+Python
 ```
 pip3 install -r requirements.txt
+cd src
+
+python3 ct.py aws -c list-ec2
+python3 ct.py gcp -c list-inst
+python3 ct.py check-sites -v
+```
+
+Python Package
+```
 pip3 install .
 
-ct --help
-ct aws --help
 ct aws -c list-ec2
-ct aws -c list-rds
-ct aws -c update-r53
+ct gcp -c list-inst
+ct check-sites -v
+```
 
-ct gcp --help
-ct gcp -c list-inst --verbose
-
-ct check-sites --verbose
+Uninstall
+```
+pip3 uninstall ct
 ```
 
 API
@@ -40,13 +47,13 @@ pip3 install -r requirements.txt
 
 cd src
 python3 ct.py --help
-python3 ct.py aws list-ec2
+python3 ct.py aws -c list-ec2
 ```
 
 Python3/Rust
 ```
-cd src
-cd lib && bash build.sh
+cd src/lib && bash build.sh
+python3 rust.py
 ```
 
 CLI: https://github.com/tiangolo/typer

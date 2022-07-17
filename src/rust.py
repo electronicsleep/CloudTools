@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # Python calling Rust cpython library
 # Build: cd lib && bash build.sh
-import lib.libcloudtools as libcloudtools 
 
+import lib.libcloudtools as libcloudtools
 import typer
 
-def main(cmd: str = typer.Argument("hello"), verbose: bool = typer.Option(False, "--verbose", "-v")):
+
+def main(cmd: str = typer.Argument("hello"),
+         verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ Rust """
     typer.echo(f"Rust cmd: {cmd} verbose: {verbose}")
 

@@ -14,5 +14,5 @@ fi
 
 echo "build ok"
 cd ../
-python3 rust.py
+python3 rust.py hello
 echo "ran rust.py ok"
