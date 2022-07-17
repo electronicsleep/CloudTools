@@ -1,7 +1,5 @@
 typer
 typer-cli
-fastapi
-uvicorn
 boto3
 google-api-python-client
 requests
