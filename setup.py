@@ -3,7 +3,8 @@
 from setuptools import setup
 
 setup(name='ct',
-      version='1.1',
+      version='1.2',
+      py_modules=['ct', "ct_lib", "ct_inv"],
       description='CloudTools - Example Python/Rust Tools using Typer/Fastapi',
       author='Chris https://github.com/electronicsleep',
       url='https://github.com/electronicsleep/CloudTools',
