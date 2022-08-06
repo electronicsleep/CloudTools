@@ -4,17 +4,6 @@ CloudTools - Python Cloud Tools template using Typer/Fastapi
 
 Idea is to keep commands short and consistent use list-inst for aws/gcp
 
-### Python
-```
-pip3 install -r requirements.txt
-
-cd src
-python3 ct.py --help
-python3 ct.py cs
-python3 ct.py aws -c list-inst
-python3 ct.py gcp -c list-inst
-```
-
 ### Python Package
 ```
 pip3 install .
@@ -28,6 +17,17 @@ ct gcp -c list-inst
 Uninstall Python Package
 ```
 pip3 uninstall ct
+```
+
+### Python Dev
+```
+pip3 install -r requirements.txt
+
+cd src
+python3 ct.py --help
+python3 ct.py cs
+python3 ct.py aws -c list-inst
+python3 ct.py gcp -c list-inst
 ```
 
 ### API
@@ -62,6 +62,19 @@ For things that need to run faster
 cd src/lib && bash build.sh
 python3 rust.py
 ```
+
+### Version
+
+Python 3.9.7
+pip 22.2
+
+verified working
+
+Python 3.8.10
+pip 20.0.2
+
+MacOS Big Sur
+Ubuntu 20.04.4 LTS
 
 ### Links
 
