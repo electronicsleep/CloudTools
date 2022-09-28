@@ -68,15 +68,15 @@ def gcp(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
 @main.command()
 def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
                verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ Rust Get Result """
+    """ Rust Print """
     ct_rust.rust_print(cmd, verbose)
 
 
 @main.command()
 def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
-                     verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ Rust Cloud Tools """
-    ct_rust.rust_cloud_tools(cmd, verbose)
+              verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """ Rust Rand """
+    ct_rust.rust_rand(cmd, verbose)
 
 
 if __name__ == "__main__":
