@@ -68,14 +68,12 @@ def gcp(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
 
 
 if rust_support:
-    print("rust_support" + str(rust_support))
 
     @main.command()
     def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
                    verbose: bool = typer.Option(False, "--verbose", "-v")):
         """ Rust Print """
         ct_rust.rust_print(cmd, verbose)
-
 
     @main.command()
     def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
