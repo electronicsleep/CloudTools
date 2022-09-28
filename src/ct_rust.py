@@ -6,12 +6,12 @@ import libcloudtools
 
 
 def rust_print(cmd, verbose):
-    print("verbose:", verbose)
+    print(f"verbose: {verbose}")
     result = libcloudtools.rust_print(f"rust_print: cmd: {cmd}")
-    print(result)
+    print(f"result: {result}")
 
 
 def rust_rand(cmd, verbose):
-    print("verbose:", verbose)
-    result = libcloudtools.rust_cloud_tools(f"rust_rand: cmd: {cmd}")
-    print(result)
+    print(f"verbose: {verbose}")
+    result = libcloudtools.rust_rand(f"rust_rand: cmd: {cmd}")
+    print(f"result: {result}")

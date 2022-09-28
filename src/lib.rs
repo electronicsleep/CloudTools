@@ -23,7 +23,7 @@ fn get_version(py: Python) -> PyResult<String> {
 }
 
 fn rust_print(_py: Python, val: &str) -> PyResult<String> {
-    Ok("rust_print: cmd: ".to_owned() + val)
+    Ok("fn rust_print: cmd: ".to_owned() + val)
 }
 
 fn rust_rand(_py: Python, val: &str) -> PyResult<String> {
@@ -36,5 +36,5 @@ fn rust_rand(_py: Python, val: &str) -> PyResult<String> {
     println!("Random u32: {}", rng.gen::<u32>());
     println!("Random i32: {}", rng.gen::<i32>());
     println!("Random float: {}", rng.gen::<f64>());
-    Ok("rust_rand cmd: ".to_owned() + val)
+    Ok("fn rust_rand cmd: ".to_owned() + val)
 }

@@ -11,9 +11,11 @@
 import typer
 import ct_lib as ct_lib
 import ct_inv as ct_inv
+rust_support = False
 try:
     import ct_rust as ct_rust
-except Exception as e:
+    rust_support = True
+except ModuleNotFoundError as e:
     print(f"Rust cpython library not built skip\n-> {e}")
     pass
 
@@ -65,18 +67,21 @@ def gcp(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
         ct_lib.gcp_list_inst(default_gcp_project, verbose)
 
 
-@main.command()
-def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
-               verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ Rust Print """
-    ct_rust.rust_print(cmd, verbose)
+if rust_support:
+    print("rust_support" + str(rust_support))
+
+    @main.command()
+    def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+                   verbose: bool = typer.Option(False, "--verbose", "-v")):
+        """ Rust Print """
+        ct_rust.rust_print(cmd, verbose)
 
 
-@main.command()
-def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
-              verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ Rust Rand """
-    ct_rust.rust_rand(cmd, verbose)
+    @main.command()
+    def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+                  verbose: bool = typer.Option(False, "--verbose", "-v")):
+        """ Rust Rand """
+        ct_rust.rust_rand(cmd, verbose)
 
 
 if __name__ == "__main__":
