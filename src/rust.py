@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# Python calling Rust cpython library
+# Test Python calling Rust cpython library
 # Build: cd lib && bash build.sh
 
-import lib.libcloudtools as libcloudtools
+import libcloudtools
 import typer
 
 
@@ -11,13 +11,16 @@ def main(cmd: str = typer.Argument("hello"),
     """ Rust """
     typer.echo(f"Rust cmd: {cmd} verbose: {verbose}")
 
+    print("GET VERSION")
     result = libcloudtools.get_version()
     print(result)
 
-    result = libcloudtools.get_result(f"get_result: Rust Cmd: {cmd}")
+    print("GET RESULT")
+    result = libcloudtools.rust_print(f"rust_print: Rust Cmd: {cmd}")
     print(result)
 
-    result = libcloudtools.run_get_test(f"run_get_test: Rust: Cmd: {cmd}")
+    print("GET TEST")
+    result = libcloudtools.rust_rand(f"rust_rand: Rust: Cmd: {cmd}")
     print(result)
 
 

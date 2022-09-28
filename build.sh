@@ -3,16 +3,17 @@
 # https://docs.rs/cpython/latest/cpython
 set -e
 UNAME=$(uname)
+echo "UNAME: $UNAME"
 
 if [[ "$UNAME" == "Linux" ]]; then
   cargo rustc --release
-  cp target/release/libcloudtools.so ./libcloudtools.so
-else
+  cp target/release/libcloudtools.so src/libcloudtools.so
+elif [[ "$UNAME" == "Darwin" ]]; then
   cargo rustc --release -- -C link-arg=-undefined -C link-arg=dynamic_lookup
-  cp target/release/libcloudtools.dylib ./libcloudtools.so
+  cp target/release/libcloudtools.dylib src/libcloudtools.so
 fi
 
 echo "build ok"
-cd ../
+cd src
 python3 rust.py hello
 echo "ran rust.py ok"

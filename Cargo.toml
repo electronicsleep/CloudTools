@@ -8,6 +8,9 @@ edition = "2018"
 name = "cloudtools"
 crate-type = ["cdylib"]
 
+[dependencies]
+rand = "0.8.5"
+
 [dependencies.cpython]
 version = "0.7"
 features = ["extension-module"]

@@ -11,6 +11,11 @@
 import typer
 import ct_lib as ct_lib
 import ct_inv as ct_inv
+try:
+    import ct_rust as ct_rust
+except Exception as e:
+    print(f"Rust cpython library not built skip\n-> {e}")
+    pass
 
 main = typer.Typer()
 
@@ -20,6 +25,12 @@ default_gcp_project = 'qa'
 
 @main.command()
 def cs(verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """ Endpoint Check: Check Sites """
+    ct_lib.check_sites(ct_inv.server_list, verbose)
+
+
+@main.command()
+def test(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ Endpoint Check: Check Sites """
     ct_lib.check_sites(ct_inv.server_list, verbose)
 
@@ -52,6 +63,20 @@ def gcp(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
     else:
         print("using default list-inst")
         ct_lib.gcp_list_inst(default_gcp_project, verbose)
+
+
+@main.command()
+def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+               verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """ Rust Get Result """
+    ct_rust.rust_print(cmd, verbose)
+
+
+@main.command()
+def rust_cloud_tools(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+                     verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """ Rust Cloud Tools """
+    ct_rust.rust_cloud_tools(cmd, verbose)
 
 
 if __name__ == "__main__":
