@@ -3,7 +3,6 @@
 # https://docs.rs/cpython/latest/cpython
 set -e
 UNAME=$(uname)
-echo "UNAME: $UNAME"
 
 if [[ "$UNAME" == "Linux" ]]; then
   cargo rustc --release

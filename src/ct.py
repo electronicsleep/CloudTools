@@ -73,7 +73,7 @@ def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
 
 
 @main.command()
-def rust_cloud_tools(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
                      verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ Rust Cloud Tools """
     ct_rust.rust_cloud_tools(cmd, verbose)
