@@ -17,6 +17,16 @@ python3 ct.py aws -c list-inst
 python3 ct.py gcp -c list-inst
 ```
 
+### Python Package
+```
+pip3 install .
+
+ct --help
+ct cs
+ct aws -c list-inst
+ct gcp -c list-inst
+```
+
 ### Python3/Rust
 
 For things that need to run faster/safer
@@ -32,6 +42,11 @@ python3 ct.py rust-rand -c hello
 pip3 show ct | grep Location
 # Example: Copy to site-packages dir
 cp libcloudtools.so /usr/local/lib/python3.9/site-packages/
+```
+
+### Uninstall Python Package
+```
+pip3 uninstall ct
 ```
 
 ### API
@@ -56,20 +71,6 @@ python3 ct.py --help
 python3 ct.py aws -c list-inst
 ```
 
-### Python Package
-```
-pip3 install .
-
-ct --help
-ct cs
-ct aws -c list-inst
-ct gcp -c list-inst
-```
-
-Uninstall Python Package
-```
-pip3 uninstall ct
-```
 
 ### Versions Tested
 
