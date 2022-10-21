@@ -15,7 +15,23 @@ python3 ct.py --help
 python3 ct.py cs
 python3 ct.py aws -c list-inst
 python3 ct.py gcp -c list-inst
+```
+
+### Python3/Rust
+
+For things that need to run faster/safer
+
+Building will enable Rust Python Functions
+```
+./build.sh
+cd src
 python3 ct.py rust-print -c hello
+python3 ct.py rust-rand -c hello
+
+# Find where ct is installed
+pip3 show ct | grep Location
+# Example: Copy to site-packages dir
+cp libcloudtools.so /usr/local/lib/python3.9/site-packages/
 ```
 
 ### API
@@ -23,10 +39,7 @@ python3 ct.py rust-print -c hello
 pip3 install -r requirements_api.txt
 bash start_api.sh
 
-curl http://127.0.0.1:8080/
-curl http://127.0.0.1:8080/api
-curl http://127.0.0.1:8080/health
-curl http://127.0.0.1:8080/items/123
+bash src/test/curl-tests.sh
 
 # Swagger
 http://127.0.0.1:8080/docs
@@ -41,15 +54,6 @@ pip3 install -r requirements.txt
 cd src
 python3 ct.py --help
 python3 ct.py aws -c list-inst
-```
-
-### Python3/Rust
-
-For things that need to run faster
-```
-bash build.sh
-cd src
-python3 ct.py rust-print -c hello
 ```
 
 ### Python Package
@@ -77,8 +81,6 @@ Ubuntu 20.04.4 LTS
 
 Python 3.8.10 pip 20.0.2
 
-
-
 ### Links
 
 Python: https://www.python.org
@@ -89,4 +91,4 @@ FastAPI: https://github.com/tiangolo/fastapi
 
 Rust: https://www.rust-lang.org
 
-Rust cPython: https://crates.io/crates/cpython
+Rust cpython: https://crates.io/crates/cpython
