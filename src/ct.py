@@ -11,6 +11,11 @@
 import typer
 import ct_lib as ct_lib
 import ct_inv as ct_inv
+
+# Get version from setup.py
+import pkg_resources
+__version__ = pkg_resources.require("ct")[0].version
+
 rust_support = False
 try:
     import ct_rust as ct_rust
@@ -25,6 +30,19 @@ default_aws_region = 'us-west-1'
 default_gcp_project = 'qa'
 
 
+def version_callback(value: bool):
+    if value:
+        typer.echo(f"CloudTools (ct) Version: {__version__}")
+        raise typer.Exit()
+
+
+@main.callback()
+def common(
+    ctx: typer.Context,
+    version: bool = typer.Option(None, "--version", callback=version_callback),
+):
+    pass
+
 @main.command()
 def cs(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ Endpoint Check: Check Sites """
@@ -32,9 +50,9 @@ def cs(verbose: bool = typer.Option(False, "--verbose", "-v")):
 
 
 @main.command()
-def test(verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ Endpoint Check: Check Sites """
-    ct_lib.check_sites(ct_inv.server_list, verbose)
+def test():
+    """ Test cmd """
+    ct_lib.ask_continue()
 
 
 @main.command()

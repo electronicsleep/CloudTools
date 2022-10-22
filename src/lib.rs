@@ -12,7 +12,7 @@ py_module_initializer!(libcloudtools, |py, m| {
 
 fn rust_version(py: Python) -> PyResult<String> {
     const VERSION: &'static str = env!("CARGO_PKG_VERSION");
-    println!("libcloudtools version: {}", VERSION);
+    println!("libcloudtools (ct) version: {}", VERSION);
     let sys = py.import("sys")?;
     let version: String = sys.get(py, "version")?.extract(py)?;
 
