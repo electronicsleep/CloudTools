@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-# Test Python calling Rust cpython library
-# Build: cd lib && bash build.sh
+# Purpose: Test Python calling Rust cpython library
 
 import libcloudtools
 import typer
@@ -12,7 +11,7 @@ def main(cmd: str = typer.Argument("hello"),
     typer.echo(f"Rust cmd: {cmd} verbose: {verbose}")
 
     print("GET VERSION")
-    result = libcloudtools.get_version()
+    result = libcloudtools.rust_version()
     print(result)
 
     print("GET RESULT")

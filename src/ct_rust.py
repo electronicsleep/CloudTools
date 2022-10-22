@@ -4,6 +4,11 @@
 
 import libcloudtools
 
+def rust_version():
+    print(f"rust_version:")
+    result = libcloudtools.rust_version()
+    print(f"result: {result}")
+
 
 def rust_print(cmd, verbose):
     print(f"rust_print: cmd {cmd} verbose: {verbose}")

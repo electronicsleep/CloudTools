@@ -1,8 +1,8 @@
 [package]
 name = "CloudToolsLib"
-version = "0.0.1"
+version = "0.3.0"
 authors = ["Chris https://github.com/electronicsleep"]
-edition = "2018"
+edition = "2021"
 
 [lib]
 name = "cloudtools"
