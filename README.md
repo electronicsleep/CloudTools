@@ -17,16 +17,6 @@ python3 ct.py aws -c list-inst
 python3 ct.py gcp -c list-inst
 ```
 
-### Python Package
-```
-pip3 install .
-
-ct --help
-ct cs
-ct aws -c list-inst
-ct gcp -c list-inst
-```
-
 ### Python3/Rust
 
 For things that need to run faster/safer
@@ -35,18 +25,9 @@ Building will enable Rust Python Functions
 ```
 ./build.sh
 cd src
+python3 ct.py rust-version
 python3 ct.py rust-print -c hello
 python3 ct.py rust-rand -c hello
-
-# Find where ct is installed
-pip3 show ct | grep Location
-# Example: Copy to site-packages dir
-cp libcloudtools.so /usr/local/lib/python3.9/site-packages/
-```
-
-### Uninstall Python Package
-```
-pip3 uninstall ct
 ```
 
 ### API
@@ -60,6 +41,27 @@ bash src/test/curl-tests.sh
 http://127.0.0.1:8080/docs
 ```
 
+### Python Package
+```
+pip3 install .
+
+ct --help
+ct cs
+ct aws -c list-inst
+ct gcp -c list-inst
+
+# For Rust
+# Find where ct is installed
+pip3 show ct | grep Location
+# Example: Copy to site-packages dir
+cp libcloudtools.so /usr/local/lib/python3.9/site-packages/
+```
+
+### Uninstall Python Package
+```
+pip3 uninstall ct
+```
+
 ### Venv
 ```
 python3 -m venv tempEnv
@@ -70,7 +72,6 @@ cd src
 python3 ct.py --help
 python3 ct.py aws -c list-inst
 ```
-
 
 ### Versions Tested
 

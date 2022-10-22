@@ -13,8 +13,9 @@ import ct_lib as ct_lib
 import ct_inv as ct_inv
 
 # Get version from setup.py
-import pkg_resources
-__version__ = pkg_resources.require("ct")[0].version
+# import pkg_resources
+# __version__ = pkg_resources.require("ct")[0].version
+__version__ = "0.3.1"
 
 rust_support = False
 try:
