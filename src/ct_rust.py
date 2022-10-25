@@ -4,8 +4,9 @@
 
 import libcloudtools
 
+
 def rust_version():
-    print(f"rust_version:")
+    print("rust_version:")
     result = libcloudtools.rust_version()
     print(f"result: {result}")
 

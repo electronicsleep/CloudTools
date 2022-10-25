@@ -11,11 +11,9 @@
 import typer
 import ct_lib as ct_lib
 import ct_inv as ct_inv
+from pkg_resources import get_distribution
 
-# Get version from setup.py
-# import pkg_resources
-# __version__ = pkg_resources.require("ct")[0].version
-__version__ = "0.3.1"
+__version__ = get_distribution('ct').version
 
 rust_support = False
 try:
@@ -43,6 +41,7 @@ def common(
     version: bool = typer.Option(None, "--version", callback=version_callback),
 ):
     pass
+
 
 @main.command()
 def cs(verbose: bool = typer.Option(False, "--verbose", "-v")):

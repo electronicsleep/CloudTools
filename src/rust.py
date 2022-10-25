@@ -10,15 +10,15 @@ def main(cmd: str = typer.Argument("hello"),
     """ Rust """
     typer.echo(f"Rust cmd: {cmd} verbose: {verbose}")
 
-    print("GET VERSION")
+    print("Rust Version")
     result = libcloudtools.rust_version()
     print(result)
 
-    print("GET RESULT")
+    print("Rust Print")
     result = libcloudtools.rust_print(f"rust_print: Rust Cmd: {cmd}")
     print(result)
 
-    print("GET TEST")
+    print("Rust Rand")
     result = libcloudtools.rust_rand(f"rust_rand: Rust: Cmd: {cmd}")
     print(result)
 
