@@ -1,0 +1,3 @@
+src/libcloudtools.so
+src/__pycache__/
+target/

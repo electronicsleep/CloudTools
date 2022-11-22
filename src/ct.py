@@ -13,7 +13,8 @@ import ct_lib as ct_lib
 import ct_inv as ct_inv
 from pkg_resources import get_distribution
 
-__version__ = get_distribution('ct').version
+#__version__ = get_distribution('ct').version
+__version__ = "0.3.1"
 
 rust_support = False
 try:
