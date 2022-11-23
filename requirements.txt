@@ -3,4 +3,4 @@ typer-cli
 boto3
 google-api-python-client
 requests
-termcolor
+rich
