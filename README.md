@@ -33,8 +33,7 @@ python3 ct.py rust-rand -c hello
 ### API
 ```
 pip3 install -r requirements_api.txt
-bash start_api.sh
-
+bash run_api.sh
 bash src/test/curl-tests.sh
 
 # Swagger
@@ -74,6 +73,10 @@ python3 ct.py aws -c list-inst
 ```
 
 ### Versions Tested
+
+MacOS Monterey
+
+Python 3.10.8 pip 22.2.2
 
 MacOS Big Sur
 

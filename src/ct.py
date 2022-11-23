@@ -94,7 +94,7 @@ if rust_support:
     @main.command()
     def rust_version():
         """ Rust Version """
-        print(f"[bold red]rust_version: {cmd}[/bold red]")
+        print(f"[bold red]rust_version:[/bold red]")
         ct_rust.rust_version()
 
     @main.command()
