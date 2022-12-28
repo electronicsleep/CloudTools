@@ -12,5 +12,5 @@ crate-type = ["cdylib"]
 rand = "0.8.5"
 
 [dependencies.cpython]
-version = "0.7"
+version = "0.7.1"
 features = ["extension-module"]
