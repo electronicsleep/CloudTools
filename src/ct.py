@@ -13,7 +13,6 @@ from rich import print
 import platform
 import ct_lib as ct_lib
 import ct_inv as ct_inv
-import pkg_resources
 from importlib.metadata import version
 from pkg_resources import get_distribution
 
@@ -21,7 +20,10 @@ from pkg_resources import get_distribution
 if platform.system() == "Darwin":
     __version__ = version('ct')
 else:
-    __version__ = get_distribution('ct').version
+    try:
+        __version__ = get_distribution('ct').version
+    except Exception as e:
+        print(f"Python package not installed try: pip3 install .\nINFO:{e}")
 
 
 rust_support = False
