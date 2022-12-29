@@ -4,25 +4,31 @@
 
 # Usage:
 # python3 ct.py --help
-# python3 ct.py aws -c list-ec2
-# python3 ct.py gcp -c list-inst
+# python3 ct.py aws -c li
+# python3 ct.py gcp -c li
 # python3 ct.py cs
 
 import typer
 from rich import print
+import platform
 import ct_lib as ct_lib
 import ct_inv as ct_inv
-from pkg_resources import get_distribution
+import pkg_resources
+from importlib.metadata import version
 
-#__version__ = get_distribution('ct').version
-__version__ = "0.3.1"
+
+if platform.system() == "Darwin":
+    __version__ = version('ct')
+else:
+    __version__ = get_distribution('ct').version
+
 
 rust_support = False
 try:
     import ct_rust as ct_rust
     rust_support = True
 except ModuleNotFoundError as e:
-    print(f"Rust cpython library not built skip\n-> {e}")
+    print(f"Rust cpython library not built skip\nINFO: {e}")
     pass
 
 main = typer.Typer()
@@ -60,33 +66,33 @@ def test():
 
 
 @main.command()
-def aws(cmd: str = typer.Option("list-inst", "--cmd", "-c", help="list-inst, list-rds, update-r53"),
+def aws(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li, ldb, udns"),
         verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ aws sub cmd: default: list-inst """
-    if verbose:
-        print(f"aws cmd: {cmd} verbose: {verbose}")
-    if cmd == "list-rds":
-        print(f"aws cmd: {cmd}")
-    elif cmd == "update-r53":
-        print(f"aws cmd {cmd} are you sure you want to update r53?")
+    """ aws cmd: default: li """
+    print(f"[bold red]aws_cmd: {cmd}[/bold red]")
+    if cmd == "ldb":
+        print(f"aws_cmd: {cmd} run ldb")
+        if verbose:
+            print(f"aws_cmd: {cmd} verbose on: {verbose}")
+    elif cmd == "r53":
+        print(f"aws_cmd: {cmd} update r53?")
         ct_lib.ask_continue()
-        ct_lib.aws_update_r53(verbose)
+        ct_lib.aws_udns(verbose)
     else:
-        print("using default list-inst")
-        ct_lib.aws_list_inst(default_aws_region, verbose)
+        print("aws_cmd: li")
+        ct_lib.aws_li(default_aws_region, verbose)
 
 
 @main.command()
-def gcp(cmd: str = typer.Option("list-inst", "--cmd", "-c", help="list-inst"),
+def gcp(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li"),
         verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """ gcp sub cmd """
+    """ gcp cmd: default: li """
+    print("[bold red]gcp_cmd[/bold red]")
     if verbose:
-        print(f"gcp cmd: {cmd} verbose: {verbose}")
-    if cmd == "list-inst":
-        ct_lib.gcp_list_inst(default_gcp_project, verbose)
+        print(f"gcp_cmd: {cmd} verbose: {verbose}")
     else:
-        print("using default list-inst")
-        ct_lib.gcp_list_inst(default_gcp_project, verbose)
+        print("[bold red]gcp_cmd: li[/bold red]")
+        ct_lib.gcp_li(default_gcp_project, verbose)
 
 
 if rust_support:
@@ -98,14 +104,14 @@ if rust_support:
         ct_rust.rust_version()
 
     @main.command()
-    def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+    def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="ls"),
                    verbose: bool = typer.Option(False, "--verbose", "-v")):
         """ Rust Print """
         print(f"[bold red]rust_print: {cmd}[/bold red]")
         ct_rust.rust_print(cmd, verbose)
 
     @main.command()
-    def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="list-inst"),
+    def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="ls"),
                   verbose: bool = typer.Option(False, "--verbose", "-v")):
         """ Rust Rand """
         ct_rust.rust_rand(cmd, verbose)

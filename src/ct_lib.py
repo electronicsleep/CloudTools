@@ -11,7 +11,7 @@ import requests
 
 
 def ask_continue():
-    """ Stop and ask for user input """
+    """ Ask for user confirmation """
     yes = {'yes', 'y'}
 
     print("Proceed (y/n)?")
@@ -24,6 +24,7 @@ def ask_continue():
 
 
 def check_sites(server_list, verbose):
+    """ check websites using requests """
     if verbose:
         print(f"ec: verbose: {verbose}")
         pprint.pprint(server_list)
@@ -39,8 +40,8 @@ def check_sites(server_list, verbose):
             pprint.pprint(response.status_code)
 
 
-def aws_list_inst(region, verbose):
-    """ idea is to keep commands consistent use list-inst for aws/gcp """
+def aws_li(region, verbose):
+    """ aws list instances li (list instances) """
     if verbose:
         print(f"verbose: region: {region}")
     client = boto3.client('ec2', region)
@@ -52,8 +53,8 @@ def aws_list_inst(region, verbose):
                                          inst['Tags'][0]['Value'], inst['State']['Name']))
 
 
-def gcp_list_inst(project, verbose):
-    """ idea is to keep commands consistent use list-inst for aws/gcp """
+def gcp_li(project, verbose):
+    """ gcp list instances li (list instances) """
     format = '--format="value(name,status,zone,id,kind)"'
     if verbose:
         print(f"verbose: project: {project}")
@@ -61,13 +62,15 @@ def gcp_list_inst(project, verbose):
     run_cmd(cmd)
 
 
-def aws_update_r53(verbose):
+def aws_udns(verbose):
+    """ aws update route53 """
     if verbose:
         print("Verbose on")
     print("Updating r53 now")
 
 
 def run_cmd(cmd):
+    """ run command using subprocess """
     print("run_cmd", cmd)
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     for line in pipe.stdout:

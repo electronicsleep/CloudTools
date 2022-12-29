@@ -1,10 +1,6 @@
 # CloudTools
 
-CloudTools - Python Cloud Tools project using Typer/Fastapi
-
-Idea is to keep commands short and consistent use list-inst for aws/gcp
-
-CloudTools uses Python packaging to install the command in the users path
+CloudTools - Python Cloud Tools using Typer/Fastapi/Rust
 
 ### Python Dev
 ```
@@ -13,8 +9,8 @@ pip3 install -r requirements.txt
 cd src
 python3 ct.py --help
 python3 ct.py cs
-python3 ct.py aws -c list-inst
-python3 ct.py gcp -c list-inst
+python3 ct.py aws -c li
+python3 ct.py gcp -c li
 ```
 
 ### Python3/Rust
@@ -46,8 +42,8 @@ pip3 install .
 
 ct --help
 ct cs
-ct aws -c list-inst
-ct gcp -c list-inst
+ct aws -c li
+ct gcp -c li
 
 # For Rust
 # Find where ct is installed
@@ -69,7 +65,7 @@ pip3 install -r requirements.txt
 
 cd src
 python3 ct.py --help
-python3 ct.py aws -c list-inst
+python3 ct.py aws -c li
 ```
 
 ### Versions Tested
