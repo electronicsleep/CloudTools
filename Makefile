@@ -2,16 +2,12 @@
 build:
 	bash -ex build.sh
 
-version: build
-	cd src; python3 ct.py --help
-	cd src; python3 ct.py --version
-
-test: build
-	cd src; python3 ct.py cs
-	cd src; python3 ct.py aws -c li
-
 install:
 	pip3 install .
+
+test: build
+	cd src; python3 ct.py --version
+	cd src; python3 ct.py --help
 
 uninstall:
 	pip3 uninstall ct
