@@ -16,6 +16,7 @@ import ct_inv as ct_inv
 from importlib.metadata import version
 from pkg_resources import get_distribution
 
+verbose = False
 
 try:
     if platform.system() == "Darwin":
