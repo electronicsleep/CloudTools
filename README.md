@@ -80,6 +80,8 @@ Python 3.9.13 pip 22.1.1
 
 Ubuntu 20.04.4 LTS
 
+Ubuntu 22.04.4 LTS
+
 Python 3.8.10 pip 20.0.2
 
 ### Links

@@ -17,13 +17,16 @@ from importlib.metadata import version
 from pkg_resources import get_distribution
 
 
-if platform.system() == "Darwin":
-    __version__ = version('ct')
-else:
-    try:
+try:
+    if platform.system() == "Darwin":
+        __version__ = version('ct')
+    else:
         __version__ = get_distribution('ct').version
-    except Exception as e:
-        print(f"Python package not installed try: pip3 install .\nINFO:{e}")
+except Exception as e:
+    __version__ = "0.0.0"
+    print(f"INFO: Python package not installed try: 'pip3 install .'")
+    if verbose:
+        print(f"INFO {e}")
 
 
 rust_support = False
@@ -36,13 +39,13 @@ except ModuleNotFoundError as e:
 
 main = typer.Typer()
 
-default_aws_region = 'us-west-1'
-default_gcp_project = 'qa'
+default_aws_region = "us-west-1"
+default_gcp_project = "qa"
 
 
 def version_callback(value: bool):
     if value:
-        print(f"CloudTools (ct) Version: {__version__}")
+        print(f"CloudTools (ct) version: {__version__}")
         raise typer.Exit()
 
 
