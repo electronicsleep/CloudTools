@@ -4,3 +4,5 @@ boto3
 google-api-python-client
 requests
 rich
+pyright
+flake8
