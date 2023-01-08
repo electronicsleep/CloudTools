@@ -12,6 +12,5 @@ setup(name="ct",
       install_requres=["typer==0.3.2", "typer-cli==0.0.11"],
       package_dir={"": "src"},
       entry_points={
-        "console_scripts": ["ct=ct:main"]
-      }
-)
+          "console_scripts": ["ct=ct:main"]
+      })

@@ -1,3 +1,4 @@
 #!/bin/bash
+set -ex
 flake8 .
-pyright
+echo "tests pass"

@@ -25,7 +25,7 @@ try:
         __version__ = get_distribution('ct').version
 except Exception as e:
     __version__ = "0.0.0"
-    print(f"INFO: Python package not installed try: 'pip3 install .'")
+    print("INFO: Python package not installed try: 'pip3 install .'")
     if verbose:
         print(f"INFO {e}")
 
@@ -107,18 +107,18 @@ if rust_support:
     @main.command()
     def rust_version():
         """ Rust Version """
-        print(f"[bold red]rust_version:[/bold red]")
+        print("[bold red]rust_version:[/bold red]")
         ct_rust.rust_version()
 
     @main.command()
-    def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="ls"),
+    def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="rust_print"),
                    verbose: bool = typer.Option(False, "--verbose", "-v")):
         """ Rust Print """
         print(f"[bold red]rust_print: {cmd}[/bold red]")
         ct_rust.rust_print(cmd, verbose)
 
     @main.command()
-    def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="ls"),
+    def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="rust_rand"),
                   verbose: bool = typer.Option(False, "--verbose", "-v")):
         """ Rust Rand """
         ct_rust.rust_rand(cmd, verbose)
