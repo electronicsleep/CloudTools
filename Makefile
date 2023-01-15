@@ -6,8 +6,8 @@ install:
 	pip3 install .
 
 test: build
-	cd src; python3 ct.py --version
-	cd src; python3 ct.py --help
+	python3 src/ct.py --version
+	python3 src/ct.py --help
 
 uninstall:
 	pip3 uninstall ct

@@ -6,11 +6,10 @@ CloudTools - Python Cloud Tools using Typer/Fastapi/Rust
 ```
 pip3 install -r requirements.txt
 
-cd src
-python3 ct.py --help
-python3 ct.py cs
-python3 ct.py aws -c li
-python3 ct.py gcp -c li
+python3 src/ct.py --help
+python3 src/ct.py cs
+python3 src/ct.py aws -c li
+python3 src/ct.py gcp -c li
 ```
 
 ### Python3/Rust
@@ -19,11 +18,10 @@ For things that need to run faster/safer
 
 Building will enable Rust Python Functions
 ```
-./build.sh
-cd src
-python3 ct.py rust-version
-python3 ct.py rust-print -c hello
-python3 ct.py rust-rand -c hello
+bash build.sh
+python3 src/ct.py rust-version
+python3 src/ct.py rust-print -c hello
+python3 src/ct.py rust-rand -c hello
 ```
 
 ### API
