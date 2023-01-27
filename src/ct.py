@@ -61,14 +61,14 @@ def common(
 @main.command()
 def cs(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ Endpoint Check: Check Sites """
-    print("[bold red]check_sites[/bold red]")
+    print("[bold blue]check_sites[/bold blue]")
     ct_lib.check_sites(ct_inv.server_list, verbose)
 
 
 @main.command()
 def test():
     """ Test cmd """
-    print("[bold red]test[/bold red]")
+    print("[bold blue]test[/bold blue]")
     ct_lib.ask_continue()
 
 
@@ -76,7 +76,7 @@ def test():
 def aws(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li, ldb, udns"),
         verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ aws cmd: default: li """
-    print(f"[bold red]aws_cmd: {cmd}[/bold red]")
+    print(f"[bold blue]aws_cmd: {cmd}[/bold blue]")
     if cmd == "ldb":
         print(f"aws_cmd: {cmd} run ldb")
         if verbose:
@@ -94,11 +94,11 @@ def aws(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li, ldb, ud
 def gcp(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li"),
         verbose: bool = typer.Option(False, "--verbose", "-v")):
     """ gcp cmd: default: li """
-    print("[bold red]gcp_cmd[/bold red]")
+    print("[bold blue]gcp_cmd[/bold blue]")
     if verbose:
         print(f"gcp_cmd: {cmd} verbose: {verbose}")
     else:
-        print("[bold red]gcp_cmd: li[/bold red]")
+        print("[bold blue]gcp_cmd: li[/bold blue]")
         ct_lib.gcp_li(default_gcp_project, verbose)
 
 
@@ -107,14 +107,14 @@ if rust_support:
     @main.command()
     def rust_version():
         """ Rust Version """
-        print("[bold red]rust_version:[/bold red]")
+        print("[bold blue]rust_version:[/bold blue]")
         ct_rust.rust_version()
 
     @main.command()
     def rust_print(cmd: str = typer.Option(..., "--cmd", "-c", help="rust_print"),
                    verbose: bool = typer.Option(False, "--verbose", "-v")):
         """ Rust Print """
-        print(f"[bold red]rust_print: {cmd}[/bold red]")
+        print(f"[bold blue]rust_print: {cmd}[/bold blue]")
         ct_rust.rust_print(cmd, verbose)
 
     @main.command()

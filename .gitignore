@@ -1,3 +1,4 @@
 src/libcloudtools.so
 src/__pycache__/
+src/ct.egg-info/
 target/
