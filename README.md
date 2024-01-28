@@ -2,6 +2,13 @@
 
 CloudTools - Python Cloud Tools using Typer/Fastapi/Rust
 
+### Python virtualenv
+```
+pip3 install virtualenv
+virtualenv tempEnv
+source tempEnv/bin/activate
+```
+
 ### Python Dev
 ```
 pip3 install -r requirements.txt
@@ -10,6 +17,16 @@ python3 src/ct.py --help
 python3 src/ct.py cs
 python3 src/ct.py aws -c li
 python3 src/ct.py gcp -c li
+```
+
+### API
+```
+pip3 install -r requirements_api.txt
+bash run_api.sh
+bash src/test/curl-tests.sh
+
+# Swagger
+http://127.0.0.1:8080/docs
 ```
 
 ### Python3/Rust
@@ -22,16 +39,6 @@ bash build.sh
 python3 src/ct.py rust-version
 python3 src/ct.py rust-print -c hello
 python3 src/ct.py rust-rand -c hello
-```
-
-### API
-```
-pip3 install -r requirements_api.txt
-bash run_api.sh
-bash src/test/curl-tests.sh
-
-# Swagger
-http://127.0.0.1:8080/docs
 ```
 
 ### Python Package
