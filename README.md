@@ -22,7 +22,7 @@ python3 src/ct.py gcp -c li
 ### API
 ```
 pip3 install -r requirements_api.txt
-bash run_api.sh
+bash api.sh
 bash src/test/curl-tests.sh
 
 # Swagger
