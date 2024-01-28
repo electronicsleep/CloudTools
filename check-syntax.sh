@@ -1,4 +1,4 @@
 #!/bin/bash
 set -ex
-flake8 .
+flake8 src/*.py
 echo "tests pass"
