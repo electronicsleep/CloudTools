@@ -4,15 +4,14 @@ CloudTools - Python Cloud Tools using Typer/Fastapi/Rust
 
 ### Python virtualenv
 ```
-pip3 install virtualenv
+brew install virtualenv
 virtualenv tempEnv
 source tempEnv/bin/activate
+pip3 install -r requirements.txt
 ```
 
 ### Python Dev
 ```
-pip3 install -r requirements.txt
-
 python3 src/ct.py --help
 python3 src/ct.py cs
 python3 src/ct.py aws -c li
@@ -67,10 +66,8 @@ pip3 uninstall ct
 python3 -m venv tempEnv
 source tempEnv/bin/activate
 pip3 install -r requirements.txt
-
-cd src
-python3 ct.py --help
-python3 ct.py aws -c li
+python3 src/ct.py --help
+python3 src/ct.py aws -c li
 ```
 
 ### Versions Tested
