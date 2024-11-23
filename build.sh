@@ -1,7 +1,10 @@
 #!/bin/bash
 # Build/Run Rust cpython library
 # https://docs.rs/cpython/latest/cpython
-set -x
+set -e
+rustc src/ct.rs
+./ct
+
 UNAME=$(uname)
 
 if [[ "$UNAME" == "Linux" ]]; then

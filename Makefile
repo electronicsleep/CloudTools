@@ -1,7 +1,7 @@
 .PHONY: build
 
 test:
-	pip3 install -r requirements.txt
+	bash check-syntax.sh
 	python3 src/ct.py --version
 	python3 src/ct.py --help
 
@@ -15,5 +15,16 @@ install:
 	ct --version
 	ct --help
 
+dev:
+	bash dev.sh
+
+clean:
+	-docker stop cloud-tools
+	-docker rm cloud-tools
+	-docker image rm ubuntu-dev
+
 api:
 	bash -ex run_api.sh
+
+rust:
+	bash build.sh

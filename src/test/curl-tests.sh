@@ -1,10 +1,11 @@
 #!/bin/bash
 set -ex
-curl --fail http://127.0.0.1:8080/
+URL=http://127.0.0.1:8081
+curl --fail $URL/
 echo "-"
-curl --fail http://127.0.0.1:8080/api
+curl --fail $URL/api
 echo "-"
-curl --fail http://127.0.0.1:8080/health
+curl --fail $URL/health
 echo "-"
-curl --fail http://127.0.0.1:8080/items/123
+curl --fail $URL/items/123
 echo "Tests Pass"
