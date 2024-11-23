@@ -15,7 +15,6 @@ RUN apt-get -y update && \
     awscli \
     python3-pip \
     virtualenv \
-    openjdk-11-jre \
     bash && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

@@ -2,12 +2,9 @@
 IMAGE=$(docker images ubuntu-dev | grep -v "REPO")
 UNAME=$(uname -m)
 
-echo "IMAGE: $IMAGE"
-echo "UNAME: $UNAME"
-
 if [[ "$1" == "clean" ]]; then
-  docker stop /cloud-tools
-  docker rm /cloud-tools
+  docker stop /CloudTools
+  docker rm /CloudTools
   exit 0
 fi
 
@@ -17,9 +14,11 @@ if [[ -z "$IMAGE" ]]; then
   docker build --platform linux/$UNAME --no-cache -t ubuntu-dev:latest .
 fi
 
-DOCKER_PS=$(docker ps | grep -v CONTAINER | grep "cloud-tools")
+DOCKER_PS=$(docker ps | grep -v CONTAINER | grep "CloudTools")
 if [[ -z "$DOCKER_PS" ]]; then
+  echo "INFO: Starting CloudTools Image"
   docker run -it --name CloudTools -d -p8081:8081 --platform linux/$UNAME --volume $(pwd):/home/ubuntu ubuntu-dev:latest
 fi
 
+echo "INFO: Login CloudTools"
 docker exec -it CloudTools /bin/bash
