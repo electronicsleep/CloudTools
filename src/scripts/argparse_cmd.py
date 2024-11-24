@@ -3,11 +3,10 @@
 # Purpose: Argparse for standalone scripts
 
 # Usage
-# python3 argparse_test.py -n test
+# python3 argparse.py -n test
 
 import time
 import argparse
-import sys
 
 # sys.path.append('../') # noqa
 # import ct_lib # noqa
@@ -29,4 +28,4 @@ test = args['test']
 
 time_now = time.strftime("%Y-%m-%d-%H%M%S")
 
-print(f"name: {name} env: {env} region {region} time_now: {time_now}") 
+print(f"name: {name} env: {env} region {region} time_now: {time_now}")
