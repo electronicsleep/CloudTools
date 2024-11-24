@@ -3,11 +3,12 @@
 # Purpose: Argparse for standalone scripts
 
 # Usage
-# python3 argparse.py -n test
+# python3 argparse_cmd.py -n test -e staging
 
 import time
 import argparse
 
+# import sys
 # sys.path.append('../') # noqa
 # import ct_lib # noqa
 

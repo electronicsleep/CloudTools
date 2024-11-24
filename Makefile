@@ -24,7 +24,7 @@ clean:
 	-docker image rm ubuntu-dev
 
 api:
-	bash -ex run_api.sh
+	bash -ex api.sh
 
 rust:
 	bash build.sh
