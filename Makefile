@@ -28,3 +28,6 @@ api:
 
 rust:
 	bash build.sh
+
+docs:
+	bash src/scripts/generate_docs.sh
