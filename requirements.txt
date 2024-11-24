@@ -6,3 +6,5 @@ requests
 rich
 flake8
 ruff
+textual
+textual-dev

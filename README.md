@@ -25,7 +25,7 @@ bash api.sh
 bash src/test/curl-tests.sh
 
 # Swagger
-http://127.0.0.1:8080/docs
+http://127.0.0.1:8081/docs
 ```
 
 ### Python3/Rust
@@ -53,7 +53,7 @@ ct gcp -c li
 # Find where ct is installed
 pip3 show ct | grep Location
 # Example: Copy to site-packages dir
-cp libcloudtools.so /usr/local/lib/python3.9/site-packages/
+cp src/libcloudtools.so $(pip3 show ct | grep Location | tail -n1 | cut -f2 -d:)
 ```
 
 ### Uninstall Python Package
@@ -69,22 +69,6 @@ pip3 install -r requirements.txt
 python3 src/ct.py --help
 python3 src/ct.py aws -c li
 ```
-
-### Versions Tested
-
-MacOS Monterey
-
-Python 3.10.8 pip 22.2.2
-
-MacOS Big Sur
-
-Python 3.9.13 pip 22.1.1
-
-Ubuntu 20.04.4 LTS
-
-Ubuntu 22.04.4 LTS
-
-Python 3.8.10 pip 20.0.2
 
 ### Links
 
