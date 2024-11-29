@@ -1,12 +1,11 @@
 .PHONY: build
 
-test:
-	bash check-syntax.sh
+build:
 	python3 src/ct.py --version
 	python3 src/ct.py --help
 
-build:
-	-bash build.sh
+test:
+	bash check-syntax.sh
 
 install:
 	pip3 uninstall ct

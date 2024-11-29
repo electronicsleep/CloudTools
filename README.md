@@ -1,6 +1,13 @@
 # CloudTools
 
-CloudTools - Python Cloud Tools using Typer/Fastapi/Rust
+CloudTools - Python Cloud Tools using Typer/FastAPI/Rust
+
+Example demonstrating a Python package command line interface
+- Unified cloud command line cmd example using Typer
+- Automatic documentation creation
+- Linting using Ruff and PEP8
+- Simple api using FastAPI
+- Rust integration
 
 ### Python virtualenv
 ```
@@ -8,6 +15,13 @@ brew install virtualenv
 virtualenv tempEnv
 source tempEnv/bin/activate
 pip3 install -r requirements.txt
+```
+
+### Python Dev
+```
+make
+make test
+make install
 ```
 
 ### Python Dev
@@ -54,6 +68,7 @@ ct gcp -c li
 pip3 show ct | grep Location
 # Example: Copy to site-packages dir
 cp src/libcloudtools.so $(pip3 show ct | grep Location | tail -n1 | cut -f2 -d:)
+make docs
 ```
 
 ### Uninstall Python Package
@@ -61,14 +76,6 @@ cp src/libcloudtools.so $(pip3 show ct | grep Location | tail -n1 | cut -f2 -d:)
 pip3 uninstall ct
 ```
 
-### Venv
-```
-python3 -m venv tempEnv
-source tempEnv/bin/activate
-pip3 install -r requirements.txt
-python3 src/ct.py --help
-python3 src/ct.py aws -c li
-```
 
 ### Links
 

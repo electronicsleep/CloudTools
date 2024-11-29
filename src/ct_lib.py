@@ -8,10 +8,20 @@ import boto3
 import subprocess
 import pprint
 import requests
+import logging
+from datetime import datetime
+
+
+# log.setLevel(logging.INFO)
+logging.basicConfig(filename='ct.log',
+                    level=logging.INFO,
+                    format='%(asctime)s:%(levelname)s:%(name)s:%(message)s')
+log = logging.getLogger("ct_lib")
+log.info("run ct_lib")
 
 
 def ask_continue():
-    """ Ask for user confirmation """
+    """Ask for user confirmation"""
     yes = {'yes', 'y'}
 
     print("Proceed (y/n)?")
@@ -23,8 +33,8 @@ def ask_continue():
         exit(1)
 
 
-def check_sites(server_list, verbose):
-    """ check websites using requests """
+def check_sites(server_list: str, verbose: bool):
+    """Check websites using requests"""
     if verbose:
         print(f"ec: verbose: {verbose}")
         pprint.pprint(server_list)
@@ -40,10 +50,13 @@ def check_sites(server_list, verbose):
             pprint.pprint(response.status_code)
 
 
-def aws_li(region, verbose):
-    """ aws list instances li (list instances) """
+def aws_li(region: str, verbose: bool):
+    """AWS list instances li (list instances)"""
     if verbose:
         print(f"verbose: region: {region}")
+    log.info("run aws_li")
+    print(date_ymd())
+
     client = boto3.client('ec2', region)
     response = client.describe_instances()
     for r in response['Reservations']:
@@ -53,26 +66,43 @@ def aws_li(region, verbose):
                                          inst['Tags'][0]['Value'], inst['State']['Name']))
 
 
-def gcp_li(project, verbose):
-    """ gcp list instances li (list instances) """
-    format = '--format="value(name,status,zone,id,kind)"'
+def gcp_li(project: str, verbose: bool):
+    """GCP list instances li (list instances) """
+    format = '--format="value(name,zone,status,id,kind,INTERNAL_IP,EXTERNAL_IP,id)"'
     if verbose:
         print(f"verbose: project: {project}")
-    cmd = 'gcloud compute instances list --project=' + project + ' ' + format
+    cmd = f"gcloud compute instances list --project={project} {format}"
     run_cmd(cmd)
 
 
-def aws_udns(verbose):
-    """ aws update route53 """
+def aws_udns(verbose: bool):
+    """AWS update route53"""
     if verbose:
         print("Verbose on")
     print("Updating r53 now")
 
 
-def run_cmd(cmd):
-    """ run command using subprocess """
+def run_cmd(cmd: str):
+    """Run command using subprocess"""
     print("run_cmd", cmd)
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     for line in pipe.stdout:
         line = line.decode("utf-8")
         print(line.strip())
+
+
+def date_ymd():
+    """Return standard date format"""
+    now = datetime.now()
+    current_year = now.strftime("%Y")
+    current_month = now.strftime("%m")
+    current_day = now.strftime("%d")
+    return f"Date: {current_year}-{current_month}-{current_day}"
+
+
+def add_dict(map: dict, s: str, count: int = 1):
+    """Increment dict key string"""
+    if s in map:
+        map[s] += count
+    else:
+        map[s] = 1

@@ -17,8 +17,8 @@ $ ct [OPTIONS] COMMAND [ARGS]...
 
 * `cs`: Endpoint Check: Check Sites
 * `test`: Test cmd
-* `aws`: aws cmd: default: li
-* `gcp`: gcp cmd: default: li
+* `aws`: AWS cmd: default: li
+* `gcp`: GCP cmd: default: li
 * `rust-version`: Rust Version
 * `rust-print`: Rust Print
 * `rust-rand`: Rust Rand
@@ -54,7 +54,7 @@ $ ct test [OPTIONS]
 
 ## `ct aws`
 
-aws cmd: default: li
+AWS cmd: default: li
 
 **Usage**:
 
@@ -70,7 +70,7 @@ $ ct aws [OPTIONS]
 
 ## `ct gcp`
 
-gcp cmd: default: li
+GCP cmd: default: li
 
 **Usage**:
 
