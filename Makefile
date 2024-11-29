@@ -6,6 +6,7 @@ build:
 
 test:
 	bash check-syntax.sh
+	python3 src/ct.py test
 
 install:
 	pip3 uninstall ct
@@ -18,8 +19,8 @@ dev:
 	bash dev.sh
 
 clean:
-	-docker stop cloud-tools
-	-docker rm cloud-tools
+	-docker stop CloudTools
+	-docker rm CloudTools
 	-docker image rm ubuntu-dev
 
 api:
