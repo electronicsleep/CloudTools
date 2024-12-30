@@ -3,10 +3,11 @@
 # Purpose: CloudTools - Python cloud tools template using Typer/Fastapi
 
 # Usage:
-# python3 ct.py --help
-# python3 ct.py aws -c li
-# python3 ct.py gcp -c li
-# python3 ct.py cs
+# python3 src/ct.py --help
+# python3 src/ct.py aws -c li
+# python3 src/ct.py gcp -c li
+# python3 src/ct.py kube-events
+# python3 src/ct.py cs
 
 import typer
 from rich import print as rprint
