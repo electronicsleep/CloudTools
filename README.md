@@ -46,12 +46,19 @@ http://127.0.0.1:8081/docs
 
 For things that need to run faster/safer
 
-Building will enable Rust Python Functions
+Building will enable Rust Python functions
 ```
 bash build.sh
 python3 src/ct.py rust-version
 python3 src/ct.py rust-print -c hello
 python3 src/ct.py rust-rand -c hello
+
+# Find where ct is installed
+pip3 show ct | grep Location
+# Example: Copy to site-packages dir
+cp src/libcloudtools.so $(pip3 show ct | grep Location | tail -n1 | cut -f2 -d:)
+# Verify
+ct rust-version
 ```
 
 ### Python Package
@@ -63,11 +70,6 @@ ct cs
 ct aws -c li
 ct gcp -c li
 
-# For Rust
-# Find where ct is installed
-pip3 show ct | grep Location
-# Example: Copy to site-packages dir
-cp src/libcloudtools.so $(pip3 show ct | grep Location | tail -n1 | cut -f2 -d:)
 make docs
 ```
 
@@ -75,7 +77,6 @@ make docs
 ```
 pip3 uninstall ct
 ```
-
 
 ### Links
 

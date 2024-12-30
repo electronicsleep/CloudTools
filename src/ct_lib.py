@@ -33,7 +33,7 @@ def ask_continue():
         exit(1)
 
 
-def check_sites(server_list: str, verbose: bool):
+def check_sites(server_list: list[str], verbose: bool):
     """Check websites using requests"""
     if verbose:
         print(f"ec: verbose: {verbose}")
@@ -86,9 +86,10 @@ def run_cmd(cmd: str):
     """Run command using subprocess"""
     print("run_cmd", cmd)
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    for line in pipe.stdout:
-        line = line.decode("utf-8")
-        print(line.strip())
+    if pipe.stdout is not None:
+        for line in pipe.stdout:
+            line = line.decode("utf-8")
+            print(line.strip())
 
 
 def date_ymd():

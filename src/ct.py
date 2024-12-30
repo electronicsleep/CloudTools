@@ -11,6 +11,7 @@
 import typer
 from rich import print as rprint
 from importlib.metadata import version
+import ct_kube as ct_kube
 import ct_lib as ct_lib
 import ct_inv as ct_inv
 
@@ -95,6 +96,20 @@ def gcp(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li"),
     else:
         rprint("[bold blue]gcp_cmd: li[/bold blue]")
         ct_lib.gcp_li(default_gcp_project, verbose)
+
+
+@main.command()
+def kube_events(verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """Kube Check"""
+    rprint("[bold blue]kube_events[/bold blue]")
+    ct_kube.check_events(verbose)
+
+
+@main.command()
+def kube_pods(verbose: bool = typer.Option(False, "--verbose", "-v")):
+    """Kube Check"""
+    rprint("[bold blue]check_kube[/bold blue]")
+    ct_kube.check_pods(verbose)
 
 
 if rust_support:
