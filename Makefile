@@ -4,7 +4,7 @@ build:
 	python3 src/ct.py --version
 	python3 src/ct.py --help
 
-test:
+check:
 	bash check-syntax.sh
 	python3 src/ct.py test
 

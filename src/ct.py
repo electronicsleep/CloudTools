@@ -27,13 +27,14 @@ except Exception as e:
         print(f"INFO {e}")
 
 
-rust_support = False
-try:
-    import ct_rust as ct_rust
-    rust_support = True
-except ModuleNotFoundError as e:
-    print(f"Rust cpython library not built skip\nINFO: {e}")
-    pass
+# rust_support = False
+# try:
+#     import ct_rust as ct_rust
+#     rust_support = True
+# except ModuleNotFoundError as e:
+#     if verbose:
+#         print(f"Rust cpython library not built skip\nINFO: {e}")
+#     pass
 
 main = typer.Typer()
 
@@ -101,37 +102,37 @@ def gcp(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li"),
 
 @main.command()
 def kube_events(verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """Kube Check"""
+    """Show K8s events with failed status"""
     rprint("[bold blue]kube_events[/bold blue]")
     ct_kube.check_events(verbose)
 
 
 @main.command()
 def kube_pods(verbose: bool = typer.Option(False, "--verbose", "-v")):
-    """Kube Check"""
-    rprint("[bold blue]check_kube[/bold blue]")
+    """Show K8s pods with failed status"""
+    rprint("[bold blue]kube_pods[/bold blue]")
     ct_kube.check_pods(verbose)
 
 
-if rust_support:
-    @main.command()
-    def rust_version():
-        """ Rust Version """
-        rprint("[bold blue]rust_version:[/bold blue]")
-        ct_rust.rust_version()
+# if rust_support:
+#     @main.command()
+#     def rust_version():
+#         """ Rust Version """
+#         rprint("[bold blue]rust_version:[/bold blue]")
+#         ct_rust.rust_version()
 
-    @main.command()
-    def rust_print(cmd: str = typer.Option("test", "--cmd", "-c", help="rust_print"),
-                   verbose: bool = typer.Option(False, "--verbose", "-v")):
-        """ Rust Print """
-        rprint(f"[bold blue]rust_print: {cmd}[/bold blue]")
-        ct_rust.rust_print(cmd, verbose)
+#     @main.command()
+#     def rust_print(cmd: str = typer.Option("test", "--cmd", "-c", help="rust_print"),
+#                    verbose: bool = typer.Option(False, "--verbose", "-v")):
+#         """ Rust Print """
+#         rprint(f"[bold blue]rust_print: {cmd}[/bold blue]")
+#         ct_rust.rust_print(cmd, verbose)
 
-    @main.command()
-    def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="rust_rand"),
-                  verbose: bool = typer.Option(False, "--verbose", "-v")):
-        """ Rust Rand """
-        ct_rust.rust_rand(cmd, verbose)
+#     @main.command()
+#     def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="rust_rand"),
+#                   verbose: bool = typer.Option(False, "--verbose", "-v")):
+#         """ Rust Rand """
+#         ct_rust.rust_rand(cmd, verbose)
 
 
 if __name__ == "__main__":

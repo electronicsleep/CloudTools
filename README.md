@@ -3,7 +3,8 @@
 CloudTools - Python Cloud Tools using Typer/FastAPI/Rust
 
 Example demonstrating a Python package command line interface
-- Unified cloud command line example using Typer
+- Starting point to build out automation in cloud environments
+- Unified cloud command line examples using Typer
 - Automatic documentation creation
 - Linting using Ruff and PEP8
 - Simple API using FastAPI
@@ -20,7 +21,7 @@ pip3 install -r requirements.txt
 ### Make
 ```
 make
-make test
+make check
 make install
 ```
 
