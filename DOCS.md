@@ -19,9 +19,8 @@ $ ct [OPTIONS] COMMAND [ARGS]...
 * `test`: Test cmd
 * `aws`: AWS cmd: default: li
 * `gcp`: GCP cmd: default: li
-* `rust-version`: Rust Version
-* `rust-print`: Rust Print
-* `rust-rand`: Rust Rand
+* `kube-events`: Show K8s events with failed status
+* `kube-pods`: Show K8s pods with failed status
 
 ## `ct cs`
 
@@ -84,48 +83,32 @@ $ ct gcp [OPTIONS]
 * `-v, --verbose`
 * `--help`: Show this message and exit.
 
-## `ct rust-version`
+## `ct kube-events`
 
-Rust Version
-
-**Usage**:
-
-```console
-$ ct rust-version [OPTIONS]
-```
-
-**Options**:
-
-* `--help`: Show this message and exit.
-
-## `ct rust-print`
-
-Rust Print
+Show K8s events with failed status
 
 **Usage**:
 
 ```console
-$ ct rust-print [OPTIONS]
+$ ct kube-events [OPTIONS]
 ```
 
 **Options**:
 
-* `-c, --cmd TEXT`: rust_print  [default: test]
 * `-v, --verbose`
 * `--help`: Show this message and exit.
 
-## `ct rust-rand`
+## `ct kube-pods`
 
-Rust Rand
+Show K8s pods with failed status
 
 **Usage**:
 
 ```console
-$ ct rust-rand [OPTIONS]
+$ ct kube-pods [OPTIONS]
 ```
 
 **Options**:
 
-* `-c, --cmd TEXT`: rust_rand  [required]
 * `-v, --verbose`
 * `--help`: Show this message and exit.
