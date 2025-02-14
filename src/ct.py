@@ -36,7 +36,7 @@ except Exception as e:
 #         print(f"Rust cpython library not built skip\nINFO: {e}")
 #     pass
 
-main = typer.Typer()
+app = typer.Typer(no_args_is_help=True)
 
 default_aws_region = "us-west-1"
 default_gcp_project = "qa"
@@ -48,7 +48,7 @@ def version_callback(value: bool):
         raise typer.Exit()
 
 
-@main.callback()
+@app.callback()
 def common(
     ctx: typer.Context,
     version: bool = typer.Option(None, "--version", callback=version_callback),
@@ -56,21 +56,21 @@ def common(
     pass
 
 
-@main.command()
+@app.command()
 def cs(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """Endpoint Check: Check Sites"""
     rprint("[bold blue]check_sites[/bold blue]")
     ct_lib.check_sites(ct_inv.server_list, verbose)
 
 
-@main.command()
+@app.command()
 def test():
     """Test cmd"""
     rprint("[bold blue]test[/bold blue]")
     print(ct_lib.date_ymd())
 
 
-@main.command()
+@app.command()
 def aws(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li, ldb, udns"),
         verbose: bool = typer.Option(False, "--verbose", "-v")):
     """AWS cmd: default: li"""
@@ -88,7 +88,7 @@ def aws(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li, ldb, ud
         ct_lib.aws_li(default_aws_region, verbose)
 
 
-@main.command()
+@app.command()
 def gcp(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li"),
         verbose: bool = typer.Option(False, "--verbose", "-v")):
     """GCP cmd: default: li """
@@ -100,14 +100,14 @@ def gcp(cmd: str = typer.Option("li", "--cmd", "-c", help="commands: li"),
         ct_lib.gcp_li(default_gcp_project, verbose)
 
 
-@main.command()
+@app.command()
 def kube_events(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """Show K8s events with failed status"""
     rprint("[bold blue]kube_events[/bold blue]")
     ct_kube.check_events(verbose)
 
 
-@main.command()
+@app.command()
 def kube_pods(verbose: bool = typer.Option(False, "--verbose", "-v")):
     """Show K8s pods with failed status"""
     rprint("[bold blue]kube_pods[/bold blue]")
@@ -115,20 +115,20 @@ def kube_pods(verbose: bool = typer.Option(False, "--verbose", "-v")):
 
 
 # if rust_support:
-#     @main.command()
+#     @app.command()
 #     def rust_version():
 #         """ Rust Version """
 #         rprint("[bold blue]rust_version:[/bold blue]")
 #         ct_rust.rust_version()
 
-#     @main.command()
+#     @app.command()
 #     def rust_print(cmd: str = typer.Option("test", "--cmd", "-c", help="rust_print"),
 #                    verbose: bool = typer.Option(False, "--verbose", "-v")):
 #         """ Rust Print """
 #         rprint(f"[bold blue]rust_print: {cmd}[/bold blue]")
 #         ct_rust.rust_print(cmd, verbose)
 
-#     @main.command()
+#     @app.command()
 #     def rust_rand(cmd: str = typer.Option(..., "--cmd", "-c", help="rust_rand"),
 #                   verbose: bool = typer.Option(False, "--verbose", "-v")):
 #         """ Rust Rand """
@@ -136,4 +136,4 @@ def kube_pods(verbose: bool = typer.Option(False, "--verbose", "-v")):
 
 
 if __name__ == "__main__":
-    main()
+    app()
