@@ -13,8 +13,8 @@ Example demonstrating a Python package command line interface
 ### Python virtualenv
 ```
 brew install virtualenv
-virtualenv tempEnv
-source tempEnv/bin/activate
+virtualenv venv
+source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
@@ -64,13 +64,15 @@ ct rust-version
 
 ### Python Package
 ```
-pip3 install .
+# Install package
+make install
 
 ct --help
 ct cs
 ct aws -c li
 ct gcp -c li
 
+# Generate docs
 make docs
 ```
 
