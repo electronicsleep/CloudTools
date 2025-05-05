@@ -9,8 +9,6 @@ from textual.reactive import reactive
 from textual.widgets import Button, Footer, Header, Static, Collapsible, Label
 
 logs = "test"
-run_cmd1_str = "ls -ltra *log"
-run_cmd2_str = "ls *log"
 
 logging.basicConfig(filename='tui.log',
                     level=logging.INFO,
@@ -65,7 +63,7 @@ class RunTask(Static):
 
         log = logging.getLogger("on_button_pressed")
         log.info("run_cmd1")
-        global run_cmd1_str
+        run_cmd1_str = "ls -ltra *log"
         result = run_cmd(run_cmd1_str)
         log.info("RESULT: " + result)
 
@@ -100,7 +98,7 @@ class RunTask2(Static):
 
         log = logging.getLogger("on_button_pressed")
         log.info("run_cmd2")
-        global run_cmd2_str
+        run_cmd2_str = "ls *log"
         result = run_cmd(run_cmd2_str)
         log.info("RESULT: " + result)
 
